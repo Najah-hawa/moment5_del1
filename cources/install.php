@@ -1,14 +1,14 @@
 <?php
-include('../inc/dbcon.php');
-/* connection -anslutning */
-$conn = mysqli_connect($host, $username, $password, $dbname );
+
+/* DB-anslutning */
+$conn = mysqli_connect("localhost", "root", "","My_cources") or die('Fel vid anslutning');
+//$conn = mysqli_connect('studentmysql.miun.se', 'naha2204', '6337PJNrZr', 'naha2204') or die('Fel vid anslutning');
+/* SQL-fråga för att skapa tabell */
+$sql = "DROP TABLE IF EXISTS  Cources;";
 
 /* SQL-fråga för att skapa tabell */
-$sql = "DROP TABLE IF EXISTS  customers;";
 
-/* SQL-fråga för att skapa tabell */
-
-$sql.=  "CREATE TABLE customers(
+$sql.=  "CREATE TABLE Cources(
     id INT(11) PRIMARY KEY AUTO_INCREMENT,
     Kurskod  VARCHAR(64) NOT NULL,
     Kursnamn  text,
@@ -17,9 +17,9 @@ $sql.=  "CREATE TABLE customers(
 );";
 /* SQL-fråga för att lägga in data */
 
-$sql .= "INSERT INTO customers (Kurskod, Kursnamn, Progression, Kursplan) VALUES
+$sql .= "INSERT INTO Cources (Kurskod, Kursnamn, Progression, Kursplan) VALUES
 ('DT057G','webbutveckling 1', 'A', 'https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT057G/');";
-$sql .= "INSERT INTO customers (Kurskod, Kursnamn, Progression, Kursplan) VALUES
+$sql .= "INSERT INTO Cources (Kurskod, Kursnamn, Progression, Kursplan) VALUES
 ('DT048G','Introduktion till programmering i JavaScript', 'A', 'https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT084G/');";
 
 echo "<pre>$sql</pre>"; // Skriv ut SQL-frågan till skärm
