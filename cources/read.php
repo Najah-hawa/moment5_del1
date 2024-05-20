@@ -4,19 +4,17 @@ include('Cource.class.php');
 //headeras med inställningar för rest webbtjänsten
 
 header('Access-Control-Allow-Origin: *');
-
 header('Content-Type_ application/json');
-
-header('Access-Controll-Allow-Methods: GET, PUT, POST, DELETE');
-
 header('Access-Controll-Allow-Headers: Access-Control-Allow-Headers, Content-Type,Access-Control-Allow-Methods, Authorization, X-Reguested-With');
-
-$requestMethod = $_SERVER['REQUEST_METHOD'];
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+$method = $_SERVER['REQUEST_METHOD'];
 
 //skapa instans av klassen 
 $cource = new Cource();
 
-switch($requestMethod) {
+switch($method) {
 
         case 'GET': 
 
@@ -63,7 +61,7 @@ case 'POST':
         $deleteCource = $cource-> deleteCource($_GET);
         echo $deleteCource;
       
-      break; 
+ break; 
 
           
 
